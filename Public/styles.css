@@ -15,6 +15,10 @@ body {
 /*       TEXT STYLE       */
 /* ---------------------- */
 
+.error-message p {
+  color: red;
+}
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -25,7 +29,7 @@ p {
 
 a, a:hover, a:focus {
   color: inherit;
-  
+
   transition: all 0.3s;
 }
 
@@ -47,7 +51,7 @@ a, a:hover, a:focus {
   max-width: 250px;
   min-height: 100vh;
   background: #ffffff;
-  color: #2fd4af;
+  color: #000000;
   transition: all 0.3s;
   border-right: 1px solid #f0f0f0;
 }
@@ -62,7 +66,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul p {
-  color: #2fd4af;
+  color: #000000;
   padding: 10px;
 }
 
@@ -74,13 +78,13 @@ a, a:hover, a:focus {
   transition-duration: 0.4s;
 }
 #sidebar ul li a:hover {
-  background: #2fd4af; /* Green */
+  background: #000000; /* Green */
   color: white;
   opacity: 0.3;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-  color: #2fd4af;
+  color: #000000;
 }
 
 ul ul a {
@@ -93,17 +97,17 @@ ul ul a {
 /* ---------------------- */
 
 .navbar {
-  background-color: #2fd4af;
+  background-color: #000000;
   background-image: none;
 }
 .navbar-brand button {
   background-color: white;
-  color: #2fd4af;
-  border-color: #2fd4af;
+  color: #000000;
+  border-color: #000000;
 }
 
 .navbar-brand button:hover {
-  background-color: #2fd4af;
+  background-color: #000000;
   color: white;
   transition: 1s ease-in-out;
 }
@@ -143,4 +147,83 @@ ul ul a {
 
 .plus-card > svg {
   fill: currentColor;
+}
+
+
+/* ---------------------- */
+/*     ACCOUNT SCREEN     */
+/* ---------------------- */
+
+.account {
+  display: grid;
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  margin: 40px;
+}
+
+.profile-image-username {
+  margin: 0 auto;
+}
+
+.wrapper-account {
+  margin-top: 50px ;
+  width:100%;
+  font-family:sans-serif;
+  font-size:14px;
+  line-height:24px;
+  background-color: white;
+}
+
+.account h1 {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: white;
+}
+
+h1 + p {
+  text-align: center;
+  margin:20px 0;
+  font-size:16px;
+}
+
+.tabs {
+  list-style-type: none;
+  margin-left: 60px;
+}
+
+.tabs li {
+  align-self: center;
+  float:left;
+  width:30%;
+}
+.tabs a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+  color:#ffffff;
+  padding: 20px 0;
+  background:#000000;
+}
+
+a &:hover, &.active {
+  background:#ddd;
+}
+
+.tabgroup {
+  padding: 30px;
+  border:1px solid #f0f0f0;
+}
+.clearfix:after {
+  content:"";
+  display: table;
+  clear:both;
 }

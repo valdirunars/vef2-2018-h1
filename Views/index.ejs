@@ -13,13 +13,15 @@
               </div>
 
               <div class="modal-body">
-                <form class="form-login">
+                <form class="form-login form-group">
                   <div class="error-message username-is-required" style="display: none;"><p>Username is required</p></div>
                   <div class="error-message" id='wrong-username-or-password' style="display: none;"><p>Wrong username or password</p></div>
-                  <input id="username-login" type="text" placeholder="Username">
+                  <label for="username-login">Username:</label>
+                  <input id="username-login" class="form-control" type="text">
 
                   <div class="error-message password-is-required" style="display: none;"><p>Password is required</p></div>
-        			    <input id="password-login" type="password" placeholder="Password">
+                  <label for="password-login">Password:</label>
+        			    <input id="password-login" type="password" class="form-control">
                </form>
              </div>
 
@@ -93,11 +95,28 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input id="title-add-book" type="text" name="" value="Title" required>
-                <input id="author-add-book" type="text" name="" value="Author">
-                <input id="description-add-book" type="textarea" name="" value="Description">
-                <input id="category" type="text" name="" value="Category">
-                <input id="isbn-add-book" type="text" name="" value="ISBN number">
+                <form class="new-book-fill-out" action="index.html" method="post">
+                  <div class="form-group">
+                    <label for="title-add-book">Title:</label>
+                    <input id="title-add-book" class="form-control" type="text" name="" value="" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="author-add-book">Author:</label>
+                    <input id="author-add-book" class="form-control" type="text" name="" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="description-add-book">Description:</label>
+                    <input id="description-add-book" class="form-control" type="textarea" name="" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="category-add-book">Category:</label>
+                    <input id="category-add-book" class="form-control" type="text" name="" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="isbn-add-book">ISBN number:</label>
+                    <input id="isbn-add-book" class="form-control" type="text" name="" value="">
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

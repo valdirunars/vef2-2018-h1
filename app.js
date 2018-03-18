@@ -23,10 +23,31 @@ app.use('/', login);
 const hostname = '127.0.0.1';
 const port = process.env.PORT;
 
-app.get('/signup', async (_, res) => {
-  res.render('signup', {
-    title: 'Sign In',
-    buttonText: 'Login',
+app.get('/account', async (_, res) => {
+  res.render('account', {
+    title: 'User name',
+    categories: [
+      {
+        id: 0,
+        category: 'Featured'
+      },
+      {
+        id: 1,
+        category: 'Science Fiction'
+      },
+      {
+        id: 2,
+        category: 'Fiction'
+      },
+      {
+        id: 3,
+        category: 'Biography'
+      },
+      {
+        id: 4,
+        category: 'Academic'
+      }
+    ],
   });
 });
 
