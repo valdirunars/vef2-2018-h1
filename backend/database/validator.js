@@ -16,7 +16,8 @@ exports.createError = (messageObj, code) => {
 };
 
 exports.validateID = (id) => {
-  Number.isNaN(parseInt(id, 10)) === false;
+  const isValid = Number.isNaN(parseInt(`${id}`, 10)) === false
+  return isValid
 };
 
 exports.validateEmail = (email) => {
@@ -24,21 +25,21 @@ exports.validateEmail = (email) => {
 };
 
 exports.validateBook = (book) => {
-  const { title, isbn13, author, description, categoryKey } = book;
+  const { title, isbn, author, description, category } = book;
 
   const errors = [];
-  const isTitleValid = (typeof title === "string") && title.length > 0;
-  const isAuthorValid = (typeof author === "string") && author.length > 0;
-  const isDescriptionValid = (typeof description === "string") && description.length > 0;
-  const isIsbnValid = isbn13.length === 13 && /^\d+$/.test(isbn13);
-  const isCategoryKeyValid = /^\d+$/.test(categoryKey);
+  const isTitleValid = (typeof title === 'string') && title.length > 0;
+  const isAuthorValid = (typeof author === 'string') && author.length > 0;
+  const isDescriptionValid = (typeof description === 'string') && description.length > 0;
+  const isIsbnValid = isbn.length === 13 && /^\d+$/.test(isbn);
+  const isCategoryValid = typeof category === 'string' && category !== '';
 
   return [
     [!isTitleValid, 'title', 'Field "title" must be a non-empty string'],
     [!isAuthorValid, 'author', 'Field "author" must be a non-empty string'],
     [!isDescriptionValid, 'description', 'Field "description" must be a non-empty string'],
-    [!isIsbnValid, 'isbn13', 'Field "isbn13" must be a string of 13 numbers'],
-    [!isCategoryKeyValid, 'categoryKey', 'Field "categoryKey" must be a number'],
+    [!isIsbnValid, 'isbn', 'Field "isbn" must be a string of 13 numbers'],
+    [!isCategoryValid, 'category', 'Field "category" must be a number'],
   ].filter(isValidError).map(error => {
     return {
       field: error[IDX.FIELD],
