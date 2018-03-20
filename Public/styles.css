@@ -9,6 +9,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    padding-top: 4em;
 }
 
 /* ---------------------- */
@@ -97,6 +99,11 @@ ul ul a {
 /* ---------------------- */
 
 .navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
   background-color: #000000;
   background-image: none;
 }
