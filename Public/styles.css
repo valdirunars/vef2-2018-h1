@@ -9,6 +9,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    padding-top: 4em;
 }
 
 /* ---------------------- */
@@ -51,11 +53,42 @@ a, a:hover, a:focus {
     align-items: stretch;
 }
 
+/* ------------------- */
+/*        User         */
+/* ------------------- */
+
+#user {
+  display: none;
+  height: 30pt;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+#user-name {
+  height: 30pt;
+  color: black;
+}
+
+#user-image {
+  margin-left: 1em;
+  height: 30pt;
+  width: 30pt;
+  object-fit: fill;
+  border: 1px solid lightgray;
+  border-radius: 15pt;
+}
+
 /* ---------------------- */
 /*        NAVBAR          */
 /* ---------------------- */
 
 .navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 50pt;
+  z-index: 1000;
   background-color: #000000;
   background-image: none;
   opacity: 0.8;
