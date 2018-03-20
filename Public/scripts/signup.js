@@ -1,6 +1,16 @@
+// Globals
+
+let auth = {
+  token: null,
+  user: null,
+};
+
+let token;
+
+// signup.js
+
 $(document).ready(function () {
 
-  let token;
   let LoginNowButton = $('#login-button-homescreen');
   let signUpNowButton = $('#sign-up-button-homescreen');
   let verPass = $('#verPassword');
@@ -20,9 +30,43 @@ $(document).ready(function () {
   let errorMessageverifyPass = $('#confirm-password-alert');
   let errorMessagePasswordNotMatch = $('#password-not-match');
 
+  function showUserUI() {
+    const user = auth.user;
+    const image = user.image;
+    const name = user.name;
+
+    $('#login-modal').modal('toggle');
+    $('#user').toggle();
+    $('#auth-button-container').toggle();
+    if (image) {
+      $('#user-image').attr('src', image);
+    } else {
+      $('#user-image').attr('src', '/images/account.png');
+    }
+
+    $('#user-name').html(name);
+  }
+
   function setToken(tok) {
-    token = tok;
-    // TODO: sækja user og user-profílmynd
+    $.ajax({
+            url: '/users/me',
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Authorization': `Bearer ${tok}`,
+            },
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+              auth.token = tok;
+              auth.user = result;
+              showUserUI();
+            },
+            error: function (error) {
+              if (error) {
+                console.log(error);
+              }
+            }
+        });
   }
 
   function toggleShowOn(e, onCondition) {
@@ -63,19 +107,18 @@ $(document).ready(function () {
   });
 
   loginButton.click(function () {
-    if (usernameLogin.val() === '' && passwordLogin.val() === '') {
+    let shouldLogin = true;
+    if (usernameLogin.val() === '') {
       errorMessageUsername.show();
+      shouldLogin = false;
+    } else { errorMessageUsername.hide(); }
+
+    if (passwordLogin.val() === '') {
       errorMessagePassword.show();
-    } else {
-      errorMessageUsername.hide();
-      errorMessagePassword.hide();
-    }
+      shouldLogin = false;
+    } else { errorMessagePassword.hide(); }
 
-    showError(usernameLogin, errorMessageUsername);
-    showError(passwordLogin, errorMessagePassword);
-
-    //username.val('');
-    //password.val('');
+    if (shouldLogin) { login(); }
   });
 
   signUpButton.click(function () {
@@ -110,18 +153,16 @@ $(document).ready(function () {
     // $.get('/users/${username}', null, function (data, status){}, "json")
   });
 
-  function login(callback) {
+  function login() {
     $.ajax({
       url : "/login",// your username checker url
       type : "POST",
       data : {
-        "username": username.val(),
-        "password": password.val(),
+        "username": usernameLogin.val(),
+        "password": passwordLogin.val(),
       },
       success : function (data) {
         setToken(data.token);
-        console.log(token);
-        // redirect to homescreen with token in header
       },
       error: function (err) {
         console.log("Error: " + err);

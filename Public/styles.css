@@ -40,6 +40,27 @@ a, a:hover, a:focus {
     align-items: stretch;
 }
 
+/* ------------------- */
+/*        User         */
+/* ------------------- */
+
+#user {
+  display: none;
+  height: 30pt;
+}
+
+#user-name {
+  height: 30pt;
+  color: white;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#user-image {
+  margin-top: 5%;
+  height: 30pt;
+}
+
 /* ---------------------- */
 /*        SIDEBAR         */
 /* ---------------------- */
@@ -103,6 +124,7 @@ ul ul a {
   top: 0;
   right: 0;
   left: 0;
+  height: 50pt;
   z-index: 1000;
   background-color: #000000;
   background-image: none;

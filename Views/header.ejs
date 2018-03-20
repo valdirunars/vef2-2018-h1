@@ -15,9 +15,13 @@
   <body>
 
     <nav class="navbar navbar-light">
-      <div class="navbar-brand">
+      <div id='auth-button-container' class="navbar-brand">
         <button id="login-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#login-modal">Login</button>
         <button id="sign-up-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">Sign up</button>
+      </div>
+      <div id='user'>
+        <img id="user-image" />
+        <span id="user-name"></span>
       </div>
       <form class="form-inline">
         <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
