@@ -58,6 +58,7 @@ a, a:hover, a:focus {
 .navbar {
   background-color: #000000;
   background-image: none;
+  opacity: 0.8;
 }
 .navbar-brand button {
   background-color: white;
@@ -72,17 +73,25 @@ a, a:hover, a:focus {
 }
 
 /* ---------------------- */
-/*         CARDS          */
+/*     CARDS SSCREEN      */
 /* ---------------------- */
 
+.container-front {
+  margin-top: 13%;
+  background-color: white;
+}
+
+.search-bar {
+  padding-top: 60px;
+  width: 42%;
+  margin: 0 auto;
+}
 
 .card-container {
-  margin-top: 13%;
   padding-left: 1%;
   padding-right: 1%;
   padding-bottom: 10%;
   padding-top: 3%;
-  background-color: white;
 
   /* Grid System */
   display: flex;
@@ -175,5 +184,3 @@ h1 + p {
   margin-bottom: 10px;
   text-align: center;
 }
-
-/* TESTDRIVE */
