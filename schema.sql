@@ -19,3 +19,9 @@ CREATE TABLE Books (
   description text,
   category int NOT NULL
 );
+
+CREATE TABLE ReadBooks (
+  user_id int NOT NULL,
+  book_id int NOT NULL,
+  PRIMARY KEY (user_id, book_id)
+);

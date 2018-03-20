@@ -50,6 +50,49 @@ router.patch('/me', auth.authenticate(), async (req, res) => {
   }
 });
 
+router.get('/:id/read', async (req, res) => {
+  const id = req.params.id;
+  const result = await users.getAllRead(id);
+  if (result.error) {
+    res.status(result.code).json(result.error);
+  } else {
+    res.json(result);
+  }
+});
+
+router.get('/me/read', auth.authenticate(), async (req, res) => {
+  const id = req.user.id;
+  const result = await users.getAllRead(id);
+  if (result.error) {
+    res.status(result.code).json(result.error);
+  } else {
+    res.json(result);
+  }
+});
+
+router.post('/me/read', auth.authenticate(), async (req, res) => {
+  const id = req.user.id;
+  const bookID = req.body.id;
+  const result = await users.getAllRead(id);
+  if (result.error) {
+    res.status(result.code).json(result.error);
+  } else {
+    res.json(result);
+  }
+});
+
+router.delete('/me/read/:bookID', auth.authenticate(), async (req, res) => {
+  const id = req.user.id;
+  const bookID = req.params.bookID;
+
+  const result = await users.removeRead(id, bookID);
+  if (result.error) {
+    res.status(result.code).json(result.error);
+  } else {
+    res.json(result);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
   const result = await users.readOne(id);

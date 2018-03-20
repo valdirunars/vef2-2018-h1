@@ -114,6 +114,55 @@ async function del(id) {
   }
 }
 
+async function markAsRead(userID, bookID) {
+  if (!validator.validateID(bookID)) {
+    return validator.createError({ error: 'Invalid bookID' }, 400);
+  }
+  if (!validator.validateID(userID)) {
+    return validator.createError({ error: 'Invalid userID' }, 400);
+  }
+  const query = 'INSERT INTO ReadBooks VALUES($1, $2)';
+  const params = [userID, bookID];
+  try {
+    const result = await db.query(query, params);
+    return result;
+  } catch (e) {
+    return validator.createError({ error: e.message }, 400);
+  }
+}
+
+async function getAllRead(userID) {
+  if (!validator.validateID(userID)) {
+    return validator.createError({ error: 'Invalid userID' }, 400);
+  }
+
+  const query = 'SELECT * FROM Books JOIN (SELECT * FROM ReadBooks WHERE user_id = $1) read ON id = read.book_id;';
+  const params = [userID];
+  try {
+    const result = await db.query(query, params);
+    return result;
+  } catch (e) {
+    return validator.createError({ error: e.message }, 400);
+  }
+}
+
+async function removeRead(userID, bookID) {
+  if (!validator.validateID(bookID)) {
+    return validator.createError({ error: 'Invalid bookID' }, 400);
+  }
+  if (!validator.validateID(userID)) {
+    return validator.createError({ error: 'Invalid userID' }, 400);
+  }
+  const query = 'DELETE FROM ReadBooks WHERE user_id = $1 AND book_id = $2;';
+  const params = [userID, bookID];
+  try {
+    const result = await db.query(query, params);
+    return result;
+  } catch (e) {
+    return validator.createError({ error: e.message }, 400);
+  }
+}
+
 module.exports = {
   create,
   readAll,
@@ -122,4 +171,7 @@ module.exports = {
   del,
   preparePotentialUser,
   authenticate,
+  getAllRead,
+  markAsRead,
+  removeRead,
 };
