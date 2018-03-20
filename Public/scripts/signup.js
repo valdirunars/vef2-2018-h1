@@ -1,4 +1,3 @@
-console.log(typeof jQuery);
 $(document).ready(function () {
 
   let token;
