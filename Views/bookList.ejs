@@ -8,6 +8,9 @@
     </div>
 
     <div class="wrapper-booklist">
+      <div class="heading-booklist">
+        <h5>Your book list</h5>
+      </div>
       <% books.forEach(function(book) { %>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
@@ -16,14 +19,14 @@
             <span><p class="card-text">
               <%= book.description %>
             </p></span>
-            <a href="#" data-toggle="modal" data-target=<%="#bookCardModal" + book.id %>>Read more</a>
+            <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
             <a href="#" class="card-link">Mark as read</a>
           </div>
         </div>
       <% }); %>
 
       <% books.forEach(function(book) { %>
-        <div class="modal fade" id=<%="bookCardModal" + book.id %> tabindex="-1" role="dialog" aria-labelledby="bookCardModalTitle" aria-hidden="true">
+        <div class="modal fade" id="bookCardModal" tabindex="-1" role="dialog" aria-labelledby="bookCardModalTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
