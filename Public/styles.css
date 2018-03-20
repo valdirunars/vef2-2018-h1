@@ -61,6 +61,7 @@ a, a:hover, a:focus {
   display: none;
   height: 30pt;
   margin-right: 1em;
+  cursor: pointer;
 }
 
 #user-name {
