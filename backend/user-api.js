@@ -20,7 +20,7 @@ router.use(auth.initialize());
 
 router.get('/me', auth.authenticate(), async (req, res) => {
   const id = req.user.id;
-  const result = await users.readOne(id);
+  const result = await users.readOne(id, true);
   if (result.error) {
     res.status(result.code).json(result.error);
   } else {
@@ -30,7 +30,7 @@ router.get('/me', auth.authenticate(), async (req, res) => {
 
 router.patch('/me', auth.authenticate(), async (req, res) => {
   const id = req.user.id;
-  let user = await users.readOne(id);
+  let user = await users.readOne(id, true);
   const { name, password } = req.body;
 
   if (name) {
@@ -95,7 +95,7 @@ router.delete('/me/read/:bookID', auth.authenticate(), async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
-  const result = await users.readOne(id);
+  const result = await users.readOne(id, true);
   if (result.error) {
     res.status(result.code).json(result.error);
   } else {
@@ -105,7 +105,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/me/profile', [auth.authenticate(), upload.single('avatar')], async (req, res) => {
   const id = req.user.id;
-  let user = await users.readOne(id);
+  let user = await users.readOne(id, true);
 
   const fileToUpload = `${UPLOADS_FOLDER}/${req.file.filename}`;
   cloudinary.uploader.upload(fileToUpload, async (result) => {

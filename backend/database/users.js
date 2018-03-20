@@ -74,7 +74,17 @@ async function readOne(usernameOrID, trimPrivateVars) {
 
   const result = await db.query(query, params);
   if (result.length > 0) {
-    return result[0];
+    const rawUser = result[0];
+    if (!trimPrivateVars) {
+      return rawUser
+    } else {
+      return {
+        id: rawUser.id,
+        username: rawUser.username,
+        name: rawUser.name,
+        image: rawUser.image,
+      }
+    }
   }
   return validator.createError({ error: 'User not found' }, 404);
 }
@@ -94,7 +104,12 @@ async function update(id, { name, passwordhash, image } = {}) {
       if (!trimPrivateVars) {
         return user;
       } else {
-        return
+        return {
+          id: user.id,
+          username: user.username,
+          name: user.name,
+          image: user.image,
+        }
       }
     }
     return validator.createError({ error: 'User not found' }, 404);

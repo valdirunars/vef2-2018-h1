@@ -14,80 +14,64 @@
 
   <body>
 
-    <nav class="navbar navbar-light">
-      <div id='auth-button-container' class="navbar-brand">
-        <button id="login-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#login-modal">Login</button>
-        <button id="sign-up-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">Sign up</button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button id="login-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#login-modal">Login</button>
+      <button id="sign-up-button-homescreen" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#sign-up-modal">Sign up</button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+              <img src="/images/chevron-down.svg" alt="">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#"><input type="text" name="" value="" placeholder=" + Add new category">
+              <% categories.forEach(function(categoryRow) { %>
+                  <a class="dropdown-item" href="#"><%= categoryRow.category %></a>
+              <% }); %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Your Account
+              <img src="/images/chevron-down.svg" alt="">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/account">About</a>
+              <a class="dropdown-item" href="bookList">Your Book List</a>
+              <a class="dropdown-item" href="#">Your Books</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Find Users</a>
+          </li>
+        </ul>
       </div>
       <div id='user'>
-        <img id="user-image" />
         <span id="user-name"></span>
+        <img id="user-image" />
       </div>
-      <form class="form-inline">
-        <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-      </form>
-    </nav>
-
-    <div class="wrapper">
-      <nav id="sidebar">
-        <div class="sidebar-header">
-          <h3>E-Library</h3>
-
-          <ul class="list-unstyled components">
-            <li><a href="/">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li>
-              <a href="#categories-submenu" data-toggle="collapse" aria-expanded="false">
-                Categories
-                <img src="/images/chevron-down.svg" alt="">
-              </a>
-                <ul class="collapse list-unstyled" id="categories-submenu">
-                  <li><input type="text" name="" value="" placeholder="+ Add new category"></li>
-                  <% categories.forEach(function(categoryRow) { %>
-                      <li><a href="#"><%= categoryRow.category %></a></li>
-                  <% }); %>
-                </ul>
-            </li>
-            <li><a href="#">Contact</a></li>
-            <hr>
-            <li>
-              <a href="#users-account-submenu" data-toggle="collapse" aria-expanded="false">
-                Your account
-                <img src="/images/chevron-down.svg" alt="">
-              </a>
-                <ul class="collapse list-unstyled" id="users-account-submenu">
-                  <li><a href="/account">About</a></li>
-                  <li><a href="/bookList">Your book list</a></li>
-                  <li><a href="#">Your books</a></li>
-                </ul>
-            </li>
-            <li><a href="#" data-toggle="modal" data-target="#FindUserModal">Find users</a></li>
-          </ul>
-
-          <div class="modal fade" id="FindUserModal" tabindex="-1" role="dialog" aria-labelledby="FindUsersModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="FindUserModalTitle">Find Users</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <div class="search-users">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </div>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
+      <div class="modal fade" id="FindUserModal" tabindex="-1" role="dialog" aria-labelledby="FindUsersModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="FindUserModalTitle">Find Users</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
-
         </div>
-      </nav>
+      </div>
+    </nav>
