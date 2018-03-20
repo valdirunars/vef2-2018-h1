@@ -1,0 +1,53 @@
+<%- include('header'); %>
+
+<div class="account">
+  <div class="account-container">
+    <div class="profile-image-username">
+      <img class="profile-image" src="https://images.unsplash.com/photo-1501622130202-7987a9ff9ec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8a57c57ef58bc57c256d19343ade564&auto=format&fit=crop&w=802&q=80" alt="">
+      <h1>drifasoley</h1>
+    </div>
+
+    <div class="wrapper-booklist">
+      <% books.forEach(function(book) { %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= book.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
+            <span><p class="card-text">
+              <%= book.description %>
+            </p></span>
+            <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
+            <a href="#" class="card-link">Mark as read</a>
+          </div>
+        </div>
+      <% }); %>
+
+      <% books.forEach(function(book) { %>
+        <div class="modal fade" id="bookCardModal" tabindex="-1" role="dialog" aria-labelledby="bookCardModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><%= book.title %></h5>
+                <h6 class="modal-subtitle mb-2 text-muted"><%= book.author %></h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="card-text-modal"><%= book.description %></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Mark as read</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<script src="/scripts/account.js"></script>
+<script src="/scripts/index.js"></script>
+<%- include('footer'); %>

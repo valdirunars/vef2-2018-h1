@@ -1,36 +1,23 @@
 <%- include('header'); %>
 
 <div class="account">
-  <div class="profile-image-username">
-    <img class="profile-image" src="https://images.unsplash.com/photo-1501622130202-7987a9ff9ec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8a57c57ef58bc57c256d19343ade564&auto=format&fit=crop&w=802&q=80" alt="">
-    <h1>drifasoley</h1>
-  </div>
+  <div class="account-container">
+    <div class="profile-image-username">
+      <img class="profile-image" src="https://images.unsplash.com/photo-1501622130202-7987a9ff9ec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8a57c57ef58bc57c256d19343ade564&auto=format&fit=crop&w=802&q=80" alt="">
+      <h1>drifasoley</h1>
+    </div>
 
-  <div class="wrapper-account">
-    <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-      <li><a href="#basicInfo" class="active">Basic info</a></li>
-      <li><a href="#userBooks">Your books</a></li>
-      <li><a href="#userList">Your list</a></li>
-    </ul>
-    <section id="first-tab-group" class="tabgroup">
-      <div id="basicInfo">
-        <h2>Basic info</h2>
-        <img src="" alt="">
-        <p>Username:</p>
-        <p id="username-account" >drifasoley</p>
-        <p>Full name:</p>
-        <p id="fullName-account">Drífa Sóley Heimisdóttir</p>
-        <p id=""></p>
-      </div>
-      <div id="userBooks">
-        <h2></h2>
-        <p>Adipisci autem obcaecati velit natus quos beatae explicabo at tempora minima voluptates deserunt eum consectetur reiciendis placeat dolorem repellat in nam asperiores impedit voluptas iure repellendus unde eveniet accusamus ex.</p>
-      </div>
-      <div id="userList">
-        <h2>Reading</h2>
-        <p>Atque ratione soluta laboriosam illo inventore amet ipsum aliquam assumenda harum provident nam accusantium neque debitis obcaecati maxime officia saepe ad ducimus in quam libero vero quasi. Saepe sit nisi?</p>
-      </div>
-    </section>
+    <div class="wrapper-account">
+      <button id="edit-button" class="btn btn-secondary" type="button" name="button">Edit</button>
+      <p style="font-size: 20px; color: black;">Username:</p>
+      <input id="account-username-input" type="text" style="display: none;" name="" value="">
+      <p id="account-username-text" style="display: block;">drifasoley</p>
+
+      <p style="font-size: 20px; color: black;">Name:</p>
+      <input id="account-name-input" type="text" style="display: none;" name="" value="">
+      <p id="account-name-text" style="display: block;">Drífa Sóley Heimisdóttir</p>
+    </div>
+
   </div>
 </div>
 

@@ -33,20 +33,57 @@
           <ul class="list-unstyled components">
             <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Find users</a></li>
             <li>
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+              <a href="#categories-submenu" data-toggle="collapse" aria-expanded="false">
                 Categories
                 <img src="/images/chevron-down.svg" alt="">
               </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <ul class="collapse list-unstyled" id="categories-submenu">
+                  <li><input type="text" name="" value="" placeholder="+ Add new category"></li>
                   <% categories.forEach(function(categoryRow) { %>
                       <li><a href="#"><%= categoryRow.category %></a></li>
                   <% }); %>
                 </ul>
             </li>
-            <li><a href="#">Add new book</a></li>
             <li><a href="#">Contact</a></li>
+            <hr>
+            <li>
+              <a href="#users-account-submenu" data-toggle="collapse" aria-expanded="false">
+                Your account
+                <img src="/images/chevron-down.svg" alt="">
+              </a>
+                <ul class="collapse list-unstyled" id="users-account-submenu">
+                  <li><a href="/account">About</a></li>
+                  <li><a href="/bookList">Your book list</a></li>
+                  <li><a href="#">Your books</a></li>
+                </ul>
+            </li>
+            <li><a href="#" data-toggle="modal" data-target="#FindUserModal">Find users</a></li>
           </ul>
+
+          <div class="modal fade" id="FindUserModal" tabindex="-1" role="dialog" aria-labelledby="FindUsersModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="FindUserModalTitle">Find Users</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <div class="search-users">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </nav>

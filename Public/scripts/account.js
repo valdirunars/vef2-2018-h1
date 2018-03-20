@@ -1,16 +1,24 @@
 $(document).ready(function () {
-  $('.tabgroup > div').hide();
-  $('.tabgroup > div:first-of-type').show();
-  $('.tabs a').click(function(e){
-    e.preventDefault();
-      var $this = $(this),
-          tabgroup = '#'+$this.parents('.tabs').data('tabgroup'),
-          others = $this.closest('li').siblings().children('a'),
-          target = $this.attr('href');
-      others.removeClass('active');
-      $this.addClass('active');
-      $(tabgroup).children('div').hide();
-      $(target).show();
 
+  let usernameText = $('#account-username-text');
+  let usernameInput = $('#account-username-input');
+  let nameText = $('#account-name-text');
+  let nameInput = $('#account-name-input');
+
+  let editButton = $('#edit-button');
+
+  editButton.click(function () {
+    if (usernameText.show() && nameText.show()) {
+      usernameText.hide();
+      usernameInput.show();
+      nameText.hide();
+      nameInput.show();
+    } else {
+      usernameText.show();
+      usernameInput.hide();
+      nameText.show();
+      nameInput.hide();
+    }
   });
+
 });
