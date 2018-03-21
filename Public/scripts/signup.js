@@ -47,6 +47,11 @@ $(document).ready(function () {
     $('#user-name').html(name);
   }
 
+  function finishSignup(result) {
+    console.log('Successful signup: ' + JSON.stringify(result));
+    $('#sign-up-modal').modal('toggle');
+  }
+
   function setToken(tok) {
     $.ajax({
             url: '/users/me',
@@ -122,35 +127,64 @@ $(document).ready(function () {
   });
 
   signUpButton.click(function () {
+    const usernameVal = usernameSignUp.val();
+    const passwordVal = passwordSignUp.val();
+    let nameVal = name.val();
+    if (!nameVal) { nameVal = null; }
 
-    showError(usernameSignUp, errorMessageUsername);
-    showError(passwordSignUp, errorMessagePassword);
-    showError(name, errorMessageFullName);
-    showError(verPass, errorMessageverifyPass);
+    const verPassVal = verPass.val();
 
-    // TODO: finna út afhverju errorMessageUsernameLength byrtist ekki
-    toggleShowOn(errorMessageUsernameLength, usernameSignUp.val().length > 0 && usernameSignUp.val().length <= 2);
-    if (passwordSignUp.val() !== verPass.val()) {
+    let shouldSignup = true;
+    if (typeof usernameVal === 'undefined' || usernameVal === '') {
+      shouldSignup = false
+      errorMessageUsername.show();
+    } else {
+      errorMessageUsername.hide();
+    }
+
+    if (usernameVal.length > 0 && usernameVal.length < 3) {
+      errorMessageUsernameLength.show();
+      shouldSignup = false;
+    } else {
+      errorMessageUsernameLength.hide();
+    }
+
+    if (typeof passwordVal === 'undefined' || passwordVal === '') {
+      errorMessagePassword.show();
+      shouldSignup = false
+    } else {
+      errorMessagePassword.hide();
+    }
+
+    if (passwordVal.length < 5) {
+      errorMessagePasswordLength.show();
+      shouldSignup = false;
+    } else {
+      errorMessagePasswordLength.hide();
+    }
+
+    if (passwordVal !== verPassVal) {
       errorMessagePasswordNotMatch.show();
-      if (errorMessageverifyPass.show()) {
-        errorMessageverifyPass.hide();
-      } else {
-        errorMessageverifyPass.show();
-      }
+      shouldSignup = false;
     } else {
       errorMessagePasswordNotMatch.hide();
     }
 
-    //toggleShowOn(errorMessagePasswordNotMatch, passwordSignUp.val() !== verPass.val());
-    toggleShowOn(errorMessagePasswordLength, passwordSignUp.val().length > 0 && passwordSignUp.val().length <= 5);
-
-    /*username.val('');
-    password.val('');
-    name.val('');
-    verPass.val('');*/
-
-    // username already exists
-    // $.get('/users/${username}', null, function (data, status){}, "json")
+    if (shouldSignup) {
+      $.ajax({
+        url : "/register",// your username checker url
+        type : "POST",
+        data : {
+          'username': usernameVal,
+          'name': nameVal,
+          'password': passwordVal,
+        },
+        success : finishSignup,
+        error: function (err) {
+          console.log("Error: " + err);
+        }
+      });
+    }
   });
 
   function login() {
