@@ -1,6 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 body {
     font-family: 'Poppins', sans-serif;
     /*background: #ffffff;*/
@@ -11,6 +10,10 @@ body {
     background-size: cover;
 
     padding-top: 4em;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 /* ---------------------- */
@@ -153,6 +156,11 @@ a, a:hover, a:focus {
   fill: currentColor;
 }
 
+.modal-card {
+  margin: 10px;
+}
+
+
 
 /* ---------------------- */
 /*     ACCOUNT SCREEN     */
@@ -214,6 +222,31 @@ h1 + p {
 }
 
 .heading-booklist {
-  margin-bottom: 10px;
   text-align: center;
+}
+
+/* ---------------------- */
+/*        BUTTONS         */
+/* ---------------------- */
+
+#login-button-homescreen button {
+  background-color: transparent;
+  color: #000000;
+  border-color: #000000;
+}
+
+#login-button-homescreen button:hover {
+  background-color: #000000;
+  color: white;
+  transition: 0.5s ease-in-out;
+}
+
+.search-btn {
+  background-color: white;
+  color: #000000;
+}
+
+.search-btn button:hover {
+  background-color: black;
+  color: #ffffff;
 }

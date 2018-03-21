@@ -3,79 +3,11 @@
     <h1>Welcome to E-library</h1>
     <h4>Read and create e-books</h4>
     <div class="container-front">
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <h1 id="title-login">Login</h1>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </div>
-
-              <div class="modal-body">
-                <form class="form-login form-group">
-                  <div class="error-message username-is-required" style="display: none;"><p>Username is required</p></div>
-                  <div class="error-message" id='wrong-username-or-password' style="display: none;"><p>Wrong username or password</p></div>
-                  <label for="username-login">Username:</label>
-                  <input id="username-login" class="form-control" type="text">
-
-                  <div class="error-message password-is-required" style="display: none;"><p>Password is required</p></div>
-                  <label for="password-login">Password:</label>
-        			    <input id="password-login" type="password" class="form-control">
-               </form>
-             </div>
-
-             <div class="modal-footer">
-               <button id="login-button" class="btn btn-primary" type="button">Login</button>
-             </div>
-
-           </div>
-         </div>
-       </div>
-
-      <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <h1 id="title-sign-up">Sign up</h1>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </div>
-
-            <div class="modal-body">
-              <form class="form-sign-in">
-                <div class="error-message username-is-required" style="display: none;"><p>Username is required</p></div>
-                <div class="error-message" id='username-length' style="display: none;"><p>Username must be at least 3 characters long</p></div>
-                <div class="error-message" id='username-already-in-use' style="display: none;"><p>Username already in use</p></div>
-                <input id="username-sign-up" type="text" placeholder="Username">
-
-                <div class="error-message" id='full-name-required' style="display: none;"><p>Enter your full name</p></div>
-                <input id="name" type="text" placeholder="Full name">
-
-                <div class="error-message password-is-required" style="display: none;"><p>Password is required</p></div>
-                <div class="error-message" id='password-length' name='error message' style="display: none;"><p>Password must be at least 6 characters long</p></div>
-          			<input id="password-sign-up" type="password" placeholder="Password">
-
-                <div class="error-message" id='confirm-password-alert' style="display: none;"><p>Confirm your password</p></div>
-                <div class="error-message" id='password-not-match' style="display: none;"><p>Password does not match the confirm password</p></div>
-                <input id="verPassword" type="password" placeholder="Verify password">
-                </form>
-            </div>
-
-            <div class="modal-footer">
-              <button id="sign-up-button" class="btn btn-primary" type="button">Sign up</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
 
       <div class="search-bar">
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" size="50" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
         </form>
       </div>
 
@@ -134,20 +66,20 @@
           </div>
         </div>
 
-        <% books.forEach(function(book) { %>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><%= book.title %></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
-              <span><p class="card-text">
-                <%= book.description %>
-              </p></span>
-              <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
-              <a href="#" class="card-link">Mark as read</a>
-              <a href="#" class="card-link">Add to my list</a>
+          <% books.forEach(function(book) { %>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
+                <span><p class="card-text">
+                  <%= book.description %>
+                </p></span>
+                <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
+                <a href="#" class="card-link">Mark as read</a>
+                <a href="#" class="card-link">Add to my list</a>
+              </div>
             </div>
-          </div>
-        <% }); %>
+          <% }); %>
 
         <% books.forEach(function(book) { %>
           <div class="modal fade" id="bookCardModal" tabindex="-1" role="dialog" aria-labelledby="bookCardModalTitle" aria-hidden="true">
@@ -174,6 +106,8 @@
         <% }); %>
 
       </div>
+
+      <button type="button" class="btn btn-default" id="loadMore">Load More</button>
 
     </div>
   </div>
