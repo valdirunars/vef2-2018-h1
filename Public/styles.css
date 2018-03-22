@@ -130,7 +130,7 @@ a, a:hover, a:focus {
 .card-container {
   padding-left: 1%;
   padding-right: 1%;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   padding-top: 3%;
 
   /* Grid System */
@@ -261,4 +261,16 @@ h1 + p {
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+#category-add-button {
+  color: white;
+  padding-left: 43%;
+  padding-right: 42%;
+}
+
+#loadMore {
+  margin: 0 auto;
+  margin-left: 45%;
+  margin-bottom: 10%;
 }

@@ -32,7 +32,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#"><input type="text" name="" value="" placeholder=" + Add new category"></a>
-            <button type="button" class="btn btn-dark" name="button">Add</button>
+            <button id="category-add-button" type="button" class="btn btn-dark nav-link" name="button">Add</button>
             <% categories.forEach(function(categoryRow) { %>
                 <a class="dropdown-item" href="#"><%= categoryRow.category %></a>
             <% }); %>

@@ -75,8 +75,7 @@
                   <%= book.description %>
                 </p></span>
                 <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
-                <a href="#" class="card-link">Mark as read</a>
-                <a href="#" class="card-link">Add to my list</a>
+                <button class="btn card-link btn-light" id="card-mark-as-read-button">Mark as read</button>
               </div>
             </div>
           <% }); %>
@@ -96,7 +95,6 @@
                   <p class="card-text-modal"><%= book.description %></p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Add to my list</button>
                   <button type="button" class="btn btn-primary">Mark as read</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
@@ -107,7 +105,7 @@
 
       </div>
 
-      <button type="button" class="btn btn-default" id="loadMore">Load More</button>
+      <button type="button" class="btn btn-outline-dark" id="loadMore">Load More</button>
 
     </div>
   </div>
