@@ -39,6 +39,14 @@ $(document).ready(function () {
     $('#user-name').html(name);
   }
 
+  $('#log-out-button').click(function () {
+    auth.token = null;
+    auth.user = null;
+    $('#user').toggle();
+    $('#login-button-homescreen').toggle();
+    $('#sign-up-button-homescreen').toggle();
+  });
+
   function finishSignup(result) {
     console.log('Successful signup: ' + JSON.stringify(result));
     $('#sign-up-modal').modal('toggle');
