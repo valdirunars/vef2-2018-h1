@@ -13,10 +13,14 @@ let pageConfig = {
   offset: 8,
 
   // static constants
-  initialOffset: 8,
+  initialOffset: 0,
   initialLimit: 8,
 };
 
 pageConfig.limit = function() {
-  return this.offset === 0 ? 17 : 18
+  return this.offset === 0 ? 8 : 9
 }
+
+let setToken;
+let updateProfileImage;
+let updateName;

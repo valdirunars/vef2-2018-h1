@@ -89,10 +89,12 @@ async function readOne(usernameOrID, trimPrivateVars) {
   return validator.createError({ error: 'User not found' }, 404);
 }
 
-async function update(id, { name, passwordhash, image } = {}) {
+async function update(id, user, trimPrivateVars) {
   if (!validator.validateID(id)) {
     return validator.createError({ error: 'Invalid id' }, 400);
   }
+
+  const { name, passwordhash, image } = user;
 
   const query = 'UPDATE Users SET passwordhash=$1, name=$2, image=$3 WHERE id=$4 returning id;';
   const params = [passwordhash, name, image, id];

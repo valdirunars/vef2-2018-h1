@@ -14,7 +14,7 @@ $(document).ready(function () {
         return
       }
 
-      pageConfig.offset = pageConfig.initialOffset;
+      pageConfig.offset = pageConfig.initialLimit;
 
       const books = data.items;
 

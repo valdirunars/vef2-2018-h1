@@ -26,13 +26,18 @@ $(document).ready(function () {
     const image = user.image;
     const name = user.name;
 
+    $('#AboutModalTitle').html(user.username);
+    updateName(user.name);
+
     $('#login-modal').modal('toggle');
     $('#user').toggle();
     $('#login-button-homescreen').toggle();
     $('#sign-up-button-homescreen').toggle();
     if (image) {
+      $('#profile-image').attr('src', image);
       $('#user-image').attr('src', image);
     } else {
+      $('#profile-image').attr('src', '/images/account.png');
       $('#user-image').attr('src', '/images/account.png');
     }
 
@@ -42,6 +47,10 @@ $(document).ready(function () {
   $('#log-out-button').click(function () {
     auth.token = null;
     auth.user = null;
+    $('#AboutModalTitle').html('');
+    $('#account-name-text').html('');
+    $('#profile-image').attr('src', '/images/account.png');
+
     $('#user').toggle();
     $('#login-button-homescreen').toggle();
     $('#sign-up-button-homescreen').toggle();
@@ -52,7 +61,7 @@ $(document).ready(function () {
     $('#sign-up-modal').modal('toggle');
   }
 
-  function setToken(tok) {
+  setToken = function(tok) {
     $.ajax({
             url: '/users/me',
             type: 'GET',
@@ -73,6 +82,44 @@ $(document).ready(function () {
             }
         });
   }
+
+  updateName = function (name) {
+    if (!name) {
+      $('#account-name-text').html('');
+      $('#user-name').html('');
+    } else {
+      $('#account-name-text').html(name);
+      $('#user-name').html(name);
+    }
+
+  }
+
+  updateProfileImage = function () {
+    $.ajax({
+            url: '/users/me',
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Authorization': `Bearer ${tok}`,
+            },
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+              if (result.image) {
+                $('#profile-image').attr('src', image);
+                $('#user-image').attr('src', image);
+              } else {
+                $('#profile-image').attr('src', '/images/account.png');
+                $('#user-image').attr('src', '/images/account.png');
+              }
+            },
+            error: function (error) {
+              if (error) {
+                console.log(error);
+              }
+            }
+        });
+  }
+
 
   function toggleShowOn(e, onCondition) {
     if (onCondition) {

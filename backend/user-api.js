@@ -30,7 +30,7 @@ router.get('/me', auth.authenticate(), async (req, res) => {
 
 router.patch('/me', auth.authenticate(), async (req, res) => {
   const id = req.user.id;
-  let user = await users.readOne(id, true);
+  let user = await users.readOne(id, false);
   const { name, password } = req.body;
 
   if (name) {
@@ -42,7 +42,8 @@ router.patch('/me', auth.authenticate(), async (req, res) => {
     user = await users.preparePotentialUser(user);
   }
 
-  const result = await users.update(id, user);
+  const result = await users.update(id, user, true);
+  console.log('PATCH ' + JSON.stringify(result));
   if (result.error) {
     res.status(result.code).json(result.error);
   } else {
@@ -105,11 +106,14 @@ router.get('/:id', async (req, res) => {
 
 router.post('/me/profile', [auth.authenticate(), upload.single('avatar')], async (req, res) => {
   const id = req.user.id;
-  let user = await users.readOne(id, true);
+  console.log('ID: ' + id);
+  let user = await users.readOne(id, false);
 
   const fileToUpload = `${UPLOADS_FOLDER}/${req.file.filename}`;
   cloudinary.uploader.upload(fileToUpload, async (result) => {
     user.image = result.url;
+    console.log('URL: ' + result.url);
+    console.log('Image: ' + user.image);
     await users.update(id, user)
 
     fs.unlink(fileToUpload, (err) => { if (err) { console.log('Error deleting file: ' + err); } });

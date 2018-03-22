@@ -1,3 +1,65 @@
+
+
+# Til að Prufukeyra
+
+Í `/backend/database/database.js` þarf að breyta
+
+````javaScript
+const connectionString = 'postgresql://valdi@localhost/vefforritun'//`${process.env.DATABASE_URL}?ssl=true`;
+```
+
+í að vera tenging í þinn postgres server
+
+Eftir það þurfa eftirfarandi hlutir að gerast
+
+- `npm install`
+- `psql -D NAFNIÐ_Á_DBinu`
+- Copy'a `schema.sql` í psql til að búa til töflur
+- `npm run insert-books`
+
+
+Svo er það bara `npm start` og gaman gaman
+
+
+# Það sem vantar
+
+Þar sem við erum bara 2 og erum bæði í 100% vinnu samhliða námi, þá náðum við ekki alveg að tengja alla virkni í framendanum við backendan. Bakendinn er fullkláraður fyrir utan api fyrir bækur fyrir notanda (erum bara með "Mark as Read" virkni -> sem er ekki fullkláruð framendameginn)
+
+- Það vantar að:
+	- Bæta við bók
+	- Bæta við category
+	- Filtera útfrá category
+ Þó svo að virknin er öll tilbúin bakenda meginn, þetta hefði verið komið ef við hefðum náð að kreysta fram hálftíma í viðbót
+
+
+Ég vona að við fáum smá séns fyrst við vorum bara tvö :) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Hópverkefni 1
 
 Útfæra skal vefþjónustu fyrir „bókasafn“ með notendaumsjón. Gefin eru gögn fyrir bækur og flokka.
