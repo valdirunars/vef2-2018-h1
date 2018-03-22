@@ -24,10 +24,11 @@ Svo er það bara `npm start` og ýta á alla taka (Engar áhyggjur við erum ek
 
 Þar sem við erum bara 2 og erum bæði í 100% vinnu samhliða námi, þá náðum við ekki alveg að tengja alla virkni í framendanum við bakendann. Bakendinn er fullkláraður fyrir utan api fyrir bækur fyrir notanda (erum bara með "Mark as Read" virkni -> sem er ekki fullkláruð framendameginn)
 
-- Það vantar að:
+- Það vantar að tengja við bakendann:
 	- Bæta við bók
 	- Bæta við category
 	- Filtera útfrá category
+
  Þó svo að virknin er öll tilbúin bakenda meginn, þetta hefði verið komið ef við hefðum náð að kreysta fram hálftíma í viðbót
 
 
