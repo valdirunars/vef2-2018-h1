@@ -4,7 +4,7 @@
 
 Í `/backend/database/database.js` þarf að breyta
 
-````javaScript
+```javaScript
 const connectionString = 'postgresql://valdi@localhost/vefforritun'//`${process.env.DATABASE_URL}?ssl=true`;
 ```
 
@@ -31,7 +31,7 @@ Svo er það bara `npm start` og ýta á alla taka (Engar áhyggjur við erum ek
  Þó svo að virknin er öll tilbúin bakenda meginn, þetta hefði verið komið ef við hefðum náð að kreysta fram hálftíma í viðbót
 
 
-Ég vona að við fáum smá séns fyrst við vorum bara tvö :) 
+Ég vona að við fáum smá séns fyrst við vorum bara tvö :)
 
 
 
