@@ -1,12 +1,3 @@
-// Globals
-
-let auth = {
-  token: null,
-  user: null,
-};
-
-let token;
-
 // signup.js
 
 $(document).ready(function () {
