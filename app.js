@@ -43,7 +43,7 @@ app.get('/', /*auth.authenticate(),*/ async (req, res) => {
   if (categories.error) {
     return res.json(categories);
   }
-  const booksFirstPage = await books.readAll(undefined, 17, 0);
+  const booksFirstPage = await books.readAll(undefined, 8, 0);
   res.render('index', {
     title: 'Books', //+ JSON.stringify(req.user.username)
     categories,

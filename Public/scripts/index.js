@@ -18,7 +18,6 @@ $(document).ready(function () {
       url = `/books?search=${value}&limit=${pageConfig.limit()}&offset=${pageConfig.offset}`;
     }
 
-
     $.get(url, null, function(data, status, xhr) {
       if (status >= 300 || status < 200) {
         console.log("Error loading books for search. Code: " + status);
@@ -26,7 +25,7 @@ $(document).ready(function () {
       }
 
       const offset = pageConfig.OFFSET
-      pageConfig.offset += 18
+      pageConfig.offset += 9
 
       const books = data.items;
       let totalHtml = $('#books-container').html();

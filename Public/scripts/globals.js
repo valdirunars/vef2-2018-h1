@@ -10,11 +10,11 @@ let auth = {
 
 let pageConfig = {
   // A mutable value, contains the state of paging
-  offset: 17,
+  offset: 8,
 
   // static constants
-  initialOffset: 17,
-  initialLimit: 17,
+  initialOffset: 8,
+  initialLimit: 8,
 };
 
 pageConfig.limit = function() {
