@@ -23,10 +23,10 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Categories
-              <img src="/images/chevron-down.svg" alt="">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#"><input type="text" name="" value="" placeholder=" + Add new category">
+              <a class="dropdown-item" href="#"><input type="text" name="" value="" placeholder=" + Add new category"></a>
+              <button type="button" class="btn btn-dark" name="button">Add</button>
               <% categories.forEach(function(categoryRow) { %>
                   <a class="dropdown-item" href="#"><%= categoryRow.category %></a>
               <% }); %>
@@ -35,16 +35,11 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Your Account
-              <img src="/images/chevron-down.svg" alt="">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <button type="button" class="dropdown-item nav-link btn" data-toggle="modal" data-target="#AboutModal">About</button>
-              <button type="button" class="dropdown-item nav-link btn" data-toggle="modal" data-target="#AddToMyListModal">Your Book List</button>
-              <button type="button" class="dropdown-item nav-link btn" data-toggle="modal" data-target="usersBooksModal">Your Books</button>
+              <button type="button" class="dropdown-item nav-link btn" data-toggle="modal" data-target="#ReadByMeModal">Read By Me</button>
             </div>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn nav-link" data-toggle="modal" data-target="#FindUserModal">Find Users</button>
           </li>
         </ul>
       </div>
@@ -130,32 +125,6 @@
       </div>
     </div>
 
-    <div class="modal fade" id="FindUserModal" tabindex="-1" role="dialog" aria-labelledby="FindUsersModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="FindUserModalTitle">Find Users</h5>
-            <div class="search-bar-find-users">
-              <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" size="50" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="modal fade" id="AboutModal" tabindex="-1" role="dialog" aria-labelledby="AboutModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -168,6 +137,12 @@
           </div>
           <div class="modal-body">
             <button id="edit-button" class="btn btn-secondary" type="button" name="button">Edit</button>
+            <h5 id="account-profPic-h" style="display: none;">Edit Profile Picture:</h5>
+            <div class="uploadProfilePic-btn-wrapper" style="display: none;">
+              <button id="chooseNewPhotoButton" class="btn btn-light">Choose new image</button>
+              <input type="file" name="myfile" />
+            </div>
+
             <h5>Username:</h5>
             <input id="account-username-input" type="text" style="display: none;" name="" value="">
             <p id="account-username-text" style="display: block;">drifasoley</p>
@@ -190,11 +165,11 @@
       </div>
     </div>
 
-  <div class="modal fade" id="AddToMyListModal" tabindex="-1" role="dialog" aria-labelledby="AddToMyListModalTitle" aria-hidden="true">
+  <div class="modal fade" id="ReadByMeModal" tabindex="-1" role="dialog" aria-labelledby="ReadByMeModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="AddToMyListModalTitle">My book List</h5>
+          <h5 class="modal-title" id="ReadByMeModalTitle">My book List</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -217,40 +192,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="usersBooksModal" tabindex="-1" role="dialog" aria-labelledby="UsersBooksModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="UsersBooksModalTitle">My Books</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body card-container">
-          <% books.forEach(function(book) { %>
-            <div class="card modal-card" style="width: 40%;">
-              <div class="card-body">
-                <h5 class="card-title"><%= book.title %></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
-                <span><p class="card-text">
-                  <%= book.description %>
-                </p></span>
-                <a href="#" data-toggle="modal" data-target="#bookCardModal">Read more</a>
-                <a href="#" class="card-link">Mark as read</a>
-                <a href="#" class="card-link">Add to my list</a>
-              </div>
-            </div>
-          <% }); %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

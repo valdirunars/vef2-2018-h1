@@ -229,16 +229,8 @@ h1 + p {
 /*        BUTTONS         */
 /* ---------------------- */
 
-#login-button-homescreen button {
-  background-color: transparent;
-  color: #000000;
-  border-color: #000000;
-}
+#login-button-homescreen {
 
-#login-button-homescreen button:hover {
-  background-color: #000000;
-  color: white;
-  transition: 0.5s ease-in-out;
 }
 
 .search-btn {
@@ -249,4 +241,19 @@ h1 + p {
 .search-btn button:hover {
   background-color: black;
   color: #ffffff;
+}
+
+
+.uploadProfilePic-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.uploadProfilePic-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
