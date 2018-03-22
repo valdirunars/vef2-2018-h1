@@ -32,7 +32,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#"><input type="text" name="" value="" placeholder=" + Add new category"></a>
-            <button type="button" class="btn btn-dark" name="button">Add</button>
+            <button id="category-add-button" type="button" class="btn btn-dark nav-link" name="button">Add</button>
             <% categories.forEach(function(categoryRow) { %>
                 <a class="dropdown-item" href="#"><%= categoryRow.category %></a>
             <% }); %>
@@ -122,8 +122,14 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-              <img id="profile-image" class="profile-image" src="/images/account.png" alt="">
-              <h1 class="modal-title" id="AboutModalTitle"></h1>
+            <div class="modal-About-title">
+              <div class="profile-image">
+                <img src="https://images.unsplash.com/photo-1501622130202-7987a9ff9ec0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8a57c57ef58bc57c256d19343ade564&auto=format&fit=crop&w=802&q=80" alt="">
+              </div>
+              <div class="AboutModalTitle">
+                <h1 class="modal-title" id="AboutModalTitle">drifasoley</h1>
+              </div>
+            </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -135,7 +141,7 @@
               <input id="upload-avatar" type="file" name="avatar" />
             </form>
 
-            <h5>Name</h5>
+            <h5>Name:</h5>
             <input id="account-name-input" type="text" style="display: none;" name="" value="">
             <p id="account-name-text" style="display: block;"></p>
 

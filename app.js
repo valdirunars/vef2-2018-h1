@@ -30,14 +30,6 @@ app.use('/books', bookApi);
 const hostname = '127.0.0.1';
 const port = process.env.PORT;
 
-app.get('/account', async (_, res) => {
-  const categories = await books.readAllCategories();
-  res.render('account', {
-    title: 'User name',
-    categories,
-  });
-});
-
 app.get('/', /*auth.authenticate(),*/ async (req, res) => {
   const categories = await books.readAllCategories();
   if (categories.error) {
@@ -45,19 +37,6 @@ app.get('/', /*auth.authenticate(),*/ async (req, res) => {
   }
   const booksFirstPage = await books.readAll(undefined, 8, 0);
   res.render('index', {
-    title: 'Books', //+ JSON.stringify(req.user.username)
-    categories,
-    books: booksFirstPage,
-  });
-});
-
-app.get('/bookList', /*auth.authenticate(),*/ async (req, res) => {
-  const categories = await books.readAllCategories();
-  if (categories.error) {
-    return res.json(categories);
-  }
-  const booksFirstPage = await books.readAll(undefined, 100, 0);
-  res.render('bookList', {
     title: 'Books', //+ JSON.stringify(req.user.username)
     categories,
     books: booksFirstPage,
