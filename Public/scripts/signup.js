@@ -28,7 +28,8 @@ $(document).ready(function () {
 
     $('#login-modal').modal('toggle');
     $('#user').toggle();
-    $('#auth-button-container').toggle();
+    $('#login-button-homescreen').toggle();
+    $('#sign-up-button-homescreen').toggle();
     if (image) {
       $('#user-image').attr('src', image);
     } else {
@@ -37,6 +38,14 @@ $(document).ready(function () {
 
     $('#user-name').html(name);
   }
+
+  $('#log-out-button').click(function () {
+    auth.token = null;
+    auth.user = null;
+    $('#user').toggle();
+    $('#login-button-homescreen').toggle();
+    $('#sign-up-button-homescreen').toggle();
+  });
 
   function finishSignup(result) {
     console.log('Successful signup: ' + JSON.stringify(result));

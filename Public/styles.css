@@ -78,7 +78,7 @@ a, a:hover, a:focus {
 }
 
 #user-image {
-  margin-left: 1em;
+  margin-right: 1em;
   height: 30pt;
   width: 30pt;
   object-fit: fill;
@@ -91,26 +91,25 @@ a, a:hover, a:focus {
 /* ---------------------- */
 
 .navbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 50pt;
   z-index: 1000;
   background-color: #000000;
   background-image: none;
   opacity: 0.8;
 }
-.navbar-brand button {
+.navbar-brand {
   background-color: white;
   color: #000000;
   border-color: #000000;
 }
 
-.navbar-brand button:hover {
+.navbar-brand:hover {
   background-color: #000000;
   color: white;
   transition: 0.5s ease-in-out;
+}
+
+.navbar-nav {
+  float: right;
 }
 
 /* ---------------------- */
