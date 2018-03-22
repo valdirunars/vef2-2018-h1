@@ -56,6 +56,11 @@ a, a:hover, a:focus {
     align-items: stretch;
 }
 
+.AboutModalTitle{
+  margin-top: 20%;
+  margin-left: 145%;
+}
+
 /* ------------------- */
 /*        User         */
 /* ------------------- */
@@ -170,15 +175,16 @@ a, a:hover, a:focus {
   width: 100%;
 }
 
-.profile-image {
+.profile-image img {
   border-radius: 50%;
   height: 200px;
   width: 200px;
-  margin: 40px;
   margin-left: 40%;
 }
 
-.profile-image-username {
+.profile-image {
+  margin-top: 10%;
+  margin-left: 145%;
 }
 
 .wrapper-account {
@@ -229,8 +235,8 @@ h1 + p {
 /*        BUTTONS         */
 /* ---------------------- */
 
-#login-button-homescreen {
-
+#edit-button{
+  margin: 20px;
 }
 
 .search-btn {
