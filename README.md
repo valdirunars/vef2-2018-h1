@@ -18,12 +18,11 @@ Eftir það þurfa eftirfarandi hlutir að gerast
 - `npm run insert-books`
 
 
-Svo er það bara `npm start` og gaman gaman
-
+Svo er það bara `npm start` og ýta á alla taka (Engar áhyggjur við erum ekki að mine'a bitcoin)
 
 # Það sem vantar
 
-Þar sem við erum bara 2 og erum bæði í 100% vinnu samhliða námi, þá náðum við ekki alveg að tengja alla virkni í framendanum við backendan. Bakendinn er fullkláraður fyrir utan api fyrir bækur fyrir notanda (erum bara með "Mark as Read" virkni -> sem er ekki fullkláruð framendameginn)
+Þar sem við erum bara 2 og erum bæði í 100% vinnu samhliða námi, þá náðum við ekki alveg að tengja alla virkni í framendanum við bakendann. Bakendinn er fullkláraður fyrir utan api fyrir bækur fyrir notanda (erum bara með "Mark as Read" virkni -> sem er ekki fullkláruð framendameginn)
 
 - Það vantar að:
 	- Bæta við bók
