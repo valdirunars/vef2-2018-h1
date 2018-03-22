@@ -28,7 +28,8 @@ $(document).ready(function () {
 
     $('#login-modal').modal('toggle');
     $('#user').toggle();
-    $('#auth-button-container').toggle();
+    $('#login-button-homescreen').toggle();
+    $('#sign-up-button-homescreen').toggle();
     if (image) {
       $('#user-image').attr('src', image);
     } else {
